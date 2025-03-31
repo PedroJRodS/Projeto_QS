@@ -2,65 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public readonly Category $category;
+    public readonly Item $item;
+
+    public function __construct()
     {
-        //
+        $this->category = new Category();
+        $this->item = new Item();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            return redirect('/');
+        }
+        return view('category_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $created = $this->category->create([
+            'name' => $request->input('name')
+        ]);
+        if ($created) {
+            return redirect()->back()->with('message', 'Criado com sucesso');
+        }
+        return redirect()->back()->with('message', "Erro: Categoria não pode ser criada");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Categoria $categoria)
+    public function show(Category $category)
     {
-        //
+
+        return view('category_show', ['category' => $category]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categoria $categoria)
+    public function destroy(string $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Categoria $categoria)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Categoria $categoria)
-    {
-        //
+        $this->category->where('id', $id)->delete();
+        return redirect()->route('adminPanel')->with('message', 'Categoria deletada');
     }
 }
