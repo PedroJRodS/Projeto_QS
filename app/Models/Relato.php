@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class Relato extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'item_name',
         'description',
-        'found_date',
-        'status',
-        'return_date',
-        'returned_to',
+        'reporter_name',
+        'report_date',
         'category_id',
         'location_id'
     ];

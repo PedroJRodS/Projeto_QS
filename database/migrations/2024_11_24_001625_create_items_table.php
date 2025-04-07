@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->date('found_date');
+            $table->string('status')->default('Perdido');
+            $table->date('returned_date')->nullable();
+            $table->string('returned_to')->nullable();
+            $table->unsignedBigInteger('category_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('location_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
