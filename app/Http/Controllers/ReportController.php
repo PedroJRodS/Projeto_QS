@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Condition;
 use Illuminate\Http\Request;
 
-class RelatoController extends Controller
+class ReportController extends Controller
 {
     public readonly Report $report;
 

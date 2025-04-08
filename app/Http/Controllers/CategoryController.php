@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class CategoryController extends Controller
 {
     public readonly Category $category;
     public readonly Item $item;
@@ -32,7 +32,7 @@ class CategoriaController extends Controller
             'name' => $request->input('name')
         ]);
         if ($created) {
-            return redirect()->back()->with('message', 'Criado com sucesso');
+            return redirect()->back()->with('message', 'Criada com sucesso');
         }
         return redirect()->back()->with('message', "Erro: Categoria não pode ser criada");
     }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('reporter_name');
             $table->unsignedBigInteger('category_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('location_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('condition_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

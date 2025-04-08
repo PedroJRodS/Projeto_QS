@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -16,8 +16,8 @@ class Categoria extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function relatos()
+    public function reports()
     {
-        return $this->hasMany(Relato::class);
+        return $this->hasMany(Report::class);
     }
 }

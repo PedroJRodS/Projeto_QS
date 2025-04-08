@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
-use App\Http\Controllers\LocalController;
-use App\Http\Controllers\RelatoController;
-use App\Http\Controllers\PainelAdminController;
-use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ConditionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,10 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // achados e perdidos
     Route::resource('items', ItemController::class);
-    Route::resource('reports', RelatoController::class);
-    Route::get('/adminPanel', [PainelAdminController::class, 'index'])->name('adminPanel');
-    Route::resource('categories', CategoriaController::class);
-    Route::resource('locations', LocalController::class);
+    Route::resource('reports', ReportController::class);
+    Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
+    Route::resource('categories', CategoryController::class);
+    Route::resource('locations', LocationController::class);
+    Route::resource('conditions', ConditionController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('returned_to')->nullable();
             $table->unsignedBigInteger('category_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('location_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('condition_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

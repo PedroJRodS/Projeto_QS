@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Condition;
 
-class PainelAdminController extends Controller
+class AdminPanelController extends Controller
 {
     public readonly Category $category;
     public readonly Location $location;
+    public readonly Condition $condition;
     public function __construct()
     {
         $this->category = new Category();
         $this->location = new Location();
+        $this->condition = new Condition();
     }
     public function index()
     {
@@ -23,10 +26,12 @@ class PainelAdminController extends Controller
         // Listing
         $categories = Category::withCount('items', 'reports')->get();
         $locations = Location::withCount('items', 'reports')->get();
+        $conditions = Condition::withCount('items', 'reports')->get();
         // $locations = $this->location->all();
         // How many cat./loc. are there
         $countCategories = Category::count();
         $countLocations = Location::count();
-        return view('adminPanel', ['categories' => $categories, 'locations' => $locations], compact('countCategories', 'countLocations'));
+        $countConditions = Condition::count();
+        return view('adminPanel', ['categories' => $categories, 'locations' => $locations, 'conditions' => $conditions], compact('countCategories', 'countLocations', 'countConditions'));
     }
 }
