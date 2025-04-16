@@ -17,15 +17,15 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <div style="width: 100px">
-            <a href="/">
-                <img src="{{ asset('images/logo.jpg') }}" class="rounded-full" alt="">
-            </a>
+    <div
+        style="padding: 50px"
+        class="min-h-screen flex flex-col sm:justify-top items-center pt-6 sm:pt-0 bg-gradient-to-br from-amber-400 to-amber-300">
+        <div>
+            <img src="{{ asset('images/logoGuest.png') }}" class="" alt="">
         </div>
 
         <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            class="w-full sm:max-w-md mt-6 px-6 py-4 dark:bg-[#161615] shadow-xl overflow-hidden sm:rounded-lg ">
             {{ $slot }}
         </div>
     </div>

@@ -91,7 +91,7 @@
                         </a>
                     @else
                         <a
-                            href="{{ route('login') }}"
+                            href="{{ route('register') }}"
                             class="inline-block px-5 py-1.5 dark:text-[#000000] text-[#000000] hover:text-[#fbbf24] border border-transparent hover:border-[#fbbf24] dark:hover:border-[#fbbf24] rounded-sm text-sm leading-normal bg-[#fbbf24] dark:bg-[#fbbf24] hover:bg-transparent dark:hover:bg-transparent transition-colors duration-300"
                         >
                             Explorar sistema
