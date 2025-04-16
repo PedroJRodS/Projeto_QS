@@ -102,13 +102,24 @@
               <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
           </div>
-
-          <div class="pt-4">
+          <div class="flex justify-between">
+          @if(auth()->check() && auth()->user()->is_admin)
+          <form action="{{ route('items.destroy', ['item' => $item->id]) }}" method="post" class="mt-6">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+              class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md transition">
+              Deletar
+            </button>
+          </form>
+          @endif
+          <div>
             <button type="submit"
               class="px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-md transition">
               Salvar Alterações
             </button>
           </div>
+        </div>
         </form>
       </div>
     </div>

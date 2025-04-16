@@ -34,7 +34,7 @@
 
         @if ($reports->isEmpty())
         <div class="text-xl">
-          <strong>Informação:</strong> Não há relatos cadastrados.
+          <strong class="text-amber-400">Informação:</strong> Não há relatos cadastrados.
         </div>
         @else
         <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">

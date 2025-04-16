@@ -34,7 +34,7 @@
 
         @if ($lostItems->isEmpty())
         <div class="text-xl">
-          <strong>Informação:</strong> Não há itens registrados.
+          <strong class="text-amber-400">Informação:</strong> Não há itens registrados.
         </div>
         @else
         <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">
@@ -74,7 +74,7 @@
         </div>
         @if ($returnedItems->isEmpty())
         <div class="text-xl">
-          <strong>Informação:</strong> Não há itens registrados.
+          <strong class="text-amber-400">Informação:</strong> Não há itens registrados.
         </div>
         @else
         <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">

@@ -37,7 +37,7 @@ class ItemController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
+            'description' => 'required|string|max:1000',
             'found_date' => 'required|date',
             'category_id' => 'required|exists:categories,id',
             'location_id' => 'required|exists:locations,id',

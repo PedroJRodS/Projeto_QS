@@ -27,7 +27,7 @@
                             <hr>
                             @if ($categories->isEmpty())
                             <div class="text-xl">
-                                <strong>Informação:</strong> Não há categorias cadastradas.
+                                <strong class="text-amber-400">Informação:</strong> Não há categorias cadastradas.
                             </div>
                             @else
                             <table class="min-w-full bg-white border border-gray-300 text-center">
@@ -60,7 +60,7 @@
                             <hr>
                             @if ($locations->isEmpty())
                             <div class="text-xl">
-                                <strong>Informação:</strong> Não há locais cadastrados.
+                                <strong class="text-amber-400">Informação:</strong> Não há locais cadastrados.
                             </div>
                             @else
                             <table class="min-w-full bg-white border border-gray-300 text-center">
@@ -92,7 +92,7 @@
                             <hr>
                             @if ($conditions->isEmpty())
                             <div class="text-xl">
-                                <strong>Informação:</strong> Não há estados cadastrados.
+                                <strong class="text-amber-400">Informação:</strong> Não há estados cadastrados.
                             </div>
                             @else
                             <table class="min-w-full bg-white border border-gray-300 text-center">
