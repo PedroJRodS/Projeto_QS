@@ -1,40 +1,110 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-      {{ __('Registrar Item Perdido') }}
-    </h2>
-  </x-slot>
-
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <a href="{{ route('items.index') }}">Voltar</a>
-      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 text-gray-900 dark:text-gray-100">
-          @if (session()->has('message'))
-          {{ session()->get('message'); }}
-          @endif
-          <form action="{{ route('items.store') }}" method="post">
-            @csrf
-            <input class="rounded" type="text" name="name" placeholder="Nome do item"><br>
-            <input class="mt-1 rounded" type="text" name="description" placeholder="Descrição do item"><br>
-            <label class="mt-1" for="found_date">Data em que o item foi encontrado:</label><br>
-            <input class="rounded" type="date" name="found_date" id="found_date"><br>
-            <select class="mt-1 rounded" name="category_id">
+    <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+      <a href="{{ route('items.index') }}" class="text-amber-400 hover:underline mb-4 inline-block">← Voltar</a>
+
+      <div class="bg-white dark:bg-[#3E3E3A] shadow-md rounded-lg p-8">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Cadastrar Item</h2>
+
+        @if (session()->has('message'))
+          <div class="mb-4 text-green-500 font-medium">
+            {{ session()->get('message') }}
+          </div>
+        @endif
+
+        <form action="{{ route('items.store') }}" method="post" class="space-y-5">
+          @csrf
+
+          <!-- Nome -->
+          <div>
+            <label for="name" class="text-white block text-sm font-medium mb-1">Nome do item</label>
+            <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
+              type="text" name="name" id="name" value="{{ old('name') }}">
+            @error('name')
+              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <!-- Descrição -->
+          <div>
+            <label for="description" class="block text-white text-sm font-medium mb-1">Descrição</label>
+            <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
+              type="text" name="description" id="description" value="{{ old('description') }}">
+            @error('description')
+              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <!-- Data encontrada -->
+          <div>
+            <label for="found_date" class="block text-white text-sm font-medium mb-1">Data em que foi encontrado</label>
+            <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
+              type="date" name="found_date" id="found_date" value="{{ old('found_date') }}">
+            @error('found_date')
+              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <!-- Categoria -->
+          <div>
+            <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria</label>
+            <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
+              name="category_id" id="category_id">
               <option value="" disabled selected>Escolha uma categoria</option>
               @foreach($categories as $category)
-              <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                  {{ $category->name }}
+                </option>
               @endforeach
-            </select><br>
-            <select class="mt-1 rounded" name="location_id">
+            </select>
+            @error('category_id')
+              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <!-- Local -->
+          <div>
+            <label for="location_id" class="block text-white text-sm font-medium mb-1">Local</label>
+            <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
+              name="location_id" id="location_id">
               <option value="" disabled selected>Escolha um local</option>
               @foreach($locations as $location)
-              <option value="{{ $location->id }}">{{ $location->name }}</option>
+                <option value="{{ $location->id }}" @selected(old('location_id') == $location->id)>
+                  {{ $location->name }}
+                </option>
               @endforeach
-            </select><br>
-            <input type="hidden" name="status" value="Perdido">
-            <button class="mt-1 rounded underline font-semibold" type="submit">Criar</button>
-          </form>
-        </div>
+            </select>
+            @error('location_id')
+              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <!-- Estado -->
+          <div>
+            <label for="condition_id" class="block text-white text-sm font-medium mb-1">Estado do item</label>
+            <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
+              name="condition_id" id="condition_id">
+              <option value="" disabled selected>Escolha um estado</option>
+              @foreach($conditions as $condition)
+                <option value="{{ $condition->id }}" @selected(old('condition_id') == $condition->id)>
+                  {{ $condition->name }}
+                </option>
+              @endforeach
+            </select>
+            @error('condition_id')
+              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <input type="hidden" name="status" value="Perdido">
+
+          <div class="pt-4">
+            <button type="submit"
+              class="px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-md transition">
+              Salvar
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

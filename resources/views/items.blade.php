@@ -21,78 +21,94 @@
         </div>
         <div class="border-t dark:border-[#3E3E3A] my-3"></div>
       </div>
-      
-      {{-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --}}
-      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-3">
-        <div class="p-6 text-gray-900 dark:text-gray-100">
-          @if (session()->has('message'))
-          {{ session()->get('message'); }}
-          @endif
-          @if(auth()->check() && auth()->user()->is_admin)
-          <div>
-            <a href="{{ route('items.create') }}" class="font-semibold underline">Registrar novo
-              item</a>
-          </div>
-          <hr>
-          @endif
-          <h2 class="mt-3 font-semibold text-xl">Items Perdidos</h2>
-          <hr>
-          @if ($lostItems->isEmpty())
-          <div class="text-xl">
-            <strong>Informação:</strong> Não há itens registrados.
-          </div>
-          @else
-          <table class="min-w-full bg-white border border-gray-300">
-            <thead>
-              <tr>
-                <th class="py-2 px-4 border-b">Nome</th>
-                <th class="py-2 px-4 border-b">Ações</th>
-              </tr>
-            </thead>
-            @foreach ($lostItems as $item)
+
+      <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
+        @if (session()->has('message'))
+        {{ session()->get('message') }}
+        @endif
+
+        <div class="flex items-center gap-4 my-3">
+          <h2 class="font-semibold text-xl whitespace-nowrap">Items Perdidos</h2>
+          <div class="flex-grow border-t border-gray-300 dark:border-white"></div>
+        </div>
+
+        @if ($lostItems->isEmpty())
+        <div class="text-xl">
+          <strong>Informação:</strong> Não há itens registrados.
+        </div>
+        @else
+        <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">
+          <thead>
             <tr>
-              <td class="py-2 px-4 border-b">{{ $item->name }}</td>
-              <td class="py-2 px-4 border-b">
+              <th class="py-2 px-4 border-r border-gray-300">Nome</th>
+              <th class="py-2 px-4 border-r border-gray-300">Data/achado</th>
+              <th class="py-2 px-4 border-r border-gray-300">Categoria</th>
+              <th class="py-2 px-4 border-r border-gray-300">Local</th>
+              <th class="py-2 px-4 border-r border-gray-300">Estado</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            @foreach ($lostItems as $item)
+            <tr class="border-t border-white">
+              <td class="py-2 px-4 border-r border-gray-300 underline">
                 @if(auth()->check() && auth()->user()->is_admin)
-                <a href="{{ route('items.edit', ['item' => $item->id]) }}"
-                  class="text-blue-500 hover:underline">Editar</a>
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}" class="text-amber-400">{{
+                  $item->name }}</a>
+                @else
+                <a href="{{ route('items.show', ['item' => $item->id]) }}" class="text-amber-400 ml-4">{{
+                  $item->name }}</a>
                 @endif
-                <a href="{{ route('items.show', ['item' => $item->id]) }}" class="hover:underline ml-4">Ver</a>
               </td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->found_date }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->category->name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->location->name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->condition->name }}</td>
             </tr>
             @endforeach
-          </table>
-          @endif
-          <h2 class="mt-3 font-semibold text-xl">Items Devolvidos</h2>
-          <hr>
-          @if ($returnedItems->isEmpty())
-          <div class="text-xl">
-            <strong>Informação:</strong> Não há itens registrados.
-          </div>
-          @else
-          <table class="min-w-full bg-white border border-gray-300">
-            <thead>
-              <tr>
-                <th class="py-2 px-4 border-b">Nome</th>
-                <th class="py-2 px-4 border-b">Ações</th>
-              </tr>
-            </thead>
-            <ul>
-              @foreach ($returnedItems as $item)
-              <tr>
-                <td class="py-2 px-4 border-b">{{ $item->name }}</td>
-                <td class="py-2 px-4 border-b">
-                  @if(auth()->check() && auth()->user()->is_admin)
-                  <a href="{{ route('items.edit', ['item' => $item->id]) }}"
-                    class="text-blue-500 hover:underline">Editar</a>
-                  @endif
-                  <a href="{{ route('items.show', ['item' => $item->id]) }}" class="hover:underline ml-4">Ver</a>
-                </td>
-              </tr>
-              @endforeach
-          </table>
-          @endif
+          </tbody>
+        </table>
+        @endif
+        <div class="flex items-center gap-4 my-3">
+          <h2 class="font-semibold text-xl whitespace-nowrap">Items Devolvidos</h2>
+          <div class="flex-grow border-t border-gray-300 dark:border-white"></div>
         </div>
+        @if ($returnedItems->isEmpty())
+        <div class="text-xl">
+          <strong>Informação:</strong> Não há itens registrados.
+        </div>
+        @else
+        <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-r border-white">Nome</th>
+              <th class="py-2 px-4 border-r border-white">Data/retorno</th>
+              <th class="py-2 px-4 border-r border-white">Nome/receptor</th>
+              <th class="py-2 px-4 border-r border-white">Categoria</th>
+              <th class="py-2 px-4 border-r border-white">Local</th>
+              <th class="py-2 px-4 border-r border-white">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($returnedItems as $item)
+            <tr class="border-t border-white">
+              <td class="py-2 px-4 border-r border-gray-300 underline text-amber-400">
+                @if(auth()->check() && auth()->user()->is_admin)
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}" class="">{{ $item->name }}</a>
+                @else
+                <a href="{{ route('items.show', ['item' => $item->id]) }}" class="hover:underline ml-4">{{ $item->name
+                  }}</a>
+                @endif
+              </td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->returned_date }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->returned_to }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->category->name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->location->name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $item->condition->name }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        @endif
       </div>
     </div>
   </div>

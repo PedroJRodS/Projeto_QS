@@ -29,23 +29,27 @@ class ItemController extends Controller
     {
         $categories = Category::all();
         $locations = Location::all();
-        return view('item_create', compact('categories', 'locations'));
+        $conditions = Condition::all();
+        return view('item_create', compact('categories', 'locations', 'conditions'));
     }
 
     public function store(Request $request)
     {
-        $created = $this->item->create([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'found_date' => $request->input('found_date'),
-            'category_id' => $request->input('category_id'),
-            'location_id' => $request->input('location_id'),
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'found_date' => 'required|date',
+            'category_id' => 'required|exists:categories,id',
+            'location_id' => 'required|exists:locations,id',
+            'condition_id' => 'required|exists:conditions,id',
+            'status' => 'required|string|in:Perdido,Encontrado',
         ]);
-        if ($created) {
-            return redirect()->back()->with('message', 'Criado com sucesso');
-        }
-        return redirect()->back()->with('message', "Error: couldn't create item");
+
+        Item::create($validated);
+
+        return redirect()->route('items.index')->with('message', 'Item cadastrado com sucesso!');
     }
+
 
     public function show(Item $item)
     {
@@ -61,14 +65,24 @@ class ItemController extends Controller
         return view('item_edit', ['item' => $item], compact('categories', 'locations'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Item $item)
     {
-        $updated = $this->item->where('id', $id)->update($request->except(['_token', '_method']));
-        if ($updated) {
-            return redirect()->back()->with('message', 'Atualizado com sucesso');
-        }
-        return redirect()->back()->with('message', "Error: couldn't update item");
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
+            'found_date' => 'required|date',
+            'category_id' => 'required|exists:categories,id',
+            'location_id' => 'required|exists:locations,id',
+            'status' => 'required|in:Perdido,Devolvido',
+            'returned_date' => 'nullable|date|after_or_equal:found_date',
+            'returned_to' => 'nullable|string|max:255',
+        ]);
+
+        $item->update($validated);
+
+        return redirect()->route('items.index')->with('message', 'Item atualizado com sucesso!');
     }
+
 
     public function destroy(string $id)
     {

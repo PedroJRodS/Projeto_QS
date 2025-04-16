@@ -38,7 +38,7 @@
                         </tr>
                     </thead>
                     <tbody class="text-gray-800 dark:text-gray-300">
-                        <tr class="border-b hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <tr class="border-b dark:hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
                             <td class="py-2 pr-4">Carteira preta</td>
                             <td class="py-2 px-4 border-l border-gray-200 dark:border-gray-500">Contém documentos
                                 pessoais</td>

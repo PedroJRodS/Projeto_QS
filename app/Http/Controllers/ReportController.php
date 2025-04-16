@@ -28,7 +28,8 @@ class ReportController extends Controller
     {
         $categories = Category::all();
         $locations = Location::all();
-        return view('report_create', compact('categories', 'locations'));
+        $conditions = Condition::all();
+        return view('report_create', compact('categories', 'locations', 'conditions'));
     }
 
     public function store(Request $request)
