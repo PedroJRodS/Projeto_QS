@@ -7,10 +7,22 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div
-        class="bg-white text-xl font-semibold dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
-        Quantidade de Items: {{ $count }}
+      <div class="mb-6">
+        <div class="flex justify-between">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Items Cadastrados: {{ $count }}</h2>
+          @if(auth()->check() && auth()->user()->is_admin)
+          <div>
+            <a href="{{ route('items.create') }}"
+              class="bg-amber-400 text-white px-4 py-2 rounded hover:bg-amber-500 transition">
+              Novo Item
+            </a>
+          </div>
+          @endif
+        </div>
+        <div class="border-t dark:border-[#3E3E3A] my-3"></div>
       </div>
+      
+      {{-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --}}
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-3">
         <div class="p-6 text-gray-900 dark:text-gray-100">
           @if (session()->has('message'))
