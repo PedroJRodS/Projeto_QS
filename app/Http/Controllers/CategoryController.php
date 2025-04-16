@@ -28,13 +28,17 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $created = $this->category->create([
-            'name' => $request->input('name')
+        // Validação antes de qualquer ação
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
         ]);
-        if ($created) {
-            return redirect()->back()->with('message', 'Criada com sucesso');
-        }
-        return redirect()->back()->with('message', "Erro: Categoria não pode ser criada");
+
+        // Criação segura com dados validados
+        Category::create([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('adminPanel')->with('message', 'Categoria cadastrada com sucesso!');
     }
 
     public function show(Category $category)

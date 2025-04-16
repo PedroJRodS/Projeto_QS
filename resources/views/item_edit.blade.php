@@ -104,14 +104,7 @@
           </div>
           <div class="flex justify-between">
           @if(auth()->check() && auth()->user()->is_admin)
-          <form action="{{ route('items.destroy', ['item' => $item->id]) }}" method="post" class="mt-6">
-            @csrf
-            @method('DELETE')
-            <button type="submit"
-              class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md transition">
-              Deletar
-            </button>
-          </form>
+          
           @endif
           <div>
             <button type="submit"
@@ -121,6 +114,14 @@
           </div>
         </div>
         </form>
+        <form action="{{ route('items.destroy', ['item' => $item->id]) }}" method="post" class="mt-6">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+              class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md transition">
+              Deletar
+            </button>
+          </form>
       </div>
     </div>
   </div>

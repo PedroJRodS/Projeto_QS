@@ -17,8 +17,13 @@
 
                     <form action="{{ route('categories.store') }}" method="post">
                         @csrf
-                        <input class="rounded" type="text" name="name" placeholder="Nome da categoria"> <br>
+                      <div>
+                        <input class="rounded" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Nome da categoria"> <br>
                         <button class="mt-1 rounded underline font-semibold" type="submit">Criar</button>
+                        @error('name')
+                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                     </div>
                     </form>
                 </div>
             </div>

@@ -17,7 +17,7 @@
 
           <!-- Nome -->
           <div>
-            <label for="name" class="text-white block text-sm font-medium mb-1">Nome do item</label>
+            <label for="name" class="text-white block text-sm font-medium mb-1">Nome do item<span class="text-red-500">*</span></label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
               type="text" name="name" id="name" value="{{ old('name') }}">
             @error('name')
@@ -27,7 +27,7 @@
 
           <!-- Descrição -->
           <div>
-            <label for="description" class="block text-white text-sm font-medium mb-1">Descrição</label>
+            <label for="description" class="block text-white text-sm font-medium mb-1">Descrição<span class="text-red-500">*</span></label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
               type="text" name="description" id="description" value="{{ old('description') }}">
             @error('description')
@@ -37,7 +37,7 @@
 
           <!-- Data encontrada -->
           <div>
-            <label for="found_date" class="block text-white text-sm font-medium mb-1">Data em que foi encontrado</label>
+            <label for="found_date" class="block text-white text-sm font-medium mb-1">Data em que foi encontrado<span class="text-red-500">*</span></label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
               type="date" name="found_date" id="found_date" value="{{ old('found_date') }}">
             @error('found_date')
@@ -47,7 +47,7 @@
 
           <!-- Categoria -->
           <div>
-            <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria</label>
+            <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria<span class="text-red-500">*</span></label>
             <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
               name="category_id" id="category_id">
               <option value="" disabled selected>Escolha uma categoria</option>
@@ -64,7 +64,7 @@
 
           <!-- Local -->
           <div>
-            <label for="location_id" class="block text-white text-sm font-medium mb-1">Local</label>
+            <label for="location_id" class="block text-white text-sm font-medium mb-1">Local<span class="text-red-500">*</span></label>
             <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
               name="location_id" id="location_id">
               <option value="" disabled selected>Escolha um local</option>
@@ -81,7 +81,7 @@
 
           <!-- Estado -->
           <div>
-            <label for="condition_id" class="block text-white text-sm font-medium mb-1">Estado do item</label>
+            <label for="condition_id" class="block text-white text-sm font-medium mb-1">Estado do item<span class="text-red-500">*</span></label>
             <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
               name="condition_id" id="condition_id">
               <option value="" disabled selected>Escolha um estado</option>

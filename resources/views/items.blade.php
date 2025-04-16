@@ -24,7 +24,9 @@
 
       <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
         @if (session()->has('message'))
-        {{ session()->get('message') }}
+          <div class="mb-4 text-green-500 font-medium">
+            {{ session()->get('message') }}
+          </div>
         @endif
 
         <div class="flex items-center gap-4 my-3">
@@ -81,7 +83,6 @@
           <thead>
             <tr>
               <th class="py-2 px-4 border-r border-white">Nome</th>
-              <th class="py-2 px-4 border-r border-white">Data/retorno</th>
               <th class="py-2 px-4 border-r border-white">Nome/receptor</th>
               <th class="py-2 px-4 border-r border-white">Categoria</th>
               <th class="py-2 px-4 border-r border-white">Local</th>
@@ -99,7 +100,6 @@
                   }}</a>
                 @endif
               </td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->returned_date }}</td>
               <td class="py-2 px-4 border-r border-gray-300">{{ $item->returned_to }}</td>
               <td class="py-2 px-4 border-r border-gray-300">{{ $item->category->name }}</td>
               <td class="py-2 px-4 border-r border-gray-300">{{ $item->location->name }}</td>
