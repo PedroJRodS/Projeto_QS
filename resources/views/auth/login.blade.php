@@ -29,18 +29,28 @@
             @endif
             <x-input-error :messages="$errors->get('password')" />
         </div>
-        <div class="flex items-center justify-between mt-6">
+        <div class="flex items-end justify-between mt-6">
             <div class="block">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox"
                         class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-amber-400 shadow-sm focus:ring-white dark:focus:ring-white dark:focus:ring-offset-gray-800"
                         name="remember">
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Manter conectado') }}</span>
+                    <span class="ms-2 text-sm text-gray-600 dark:text-white">{{ __('Manter conectado') }}</span>
                 </label>
             </div>
             <x-primary-button class="ms-3">
                 {{ __('Entrar') }}
             </x-primary-button>
+        </div>
+        <hr class="hr mt-4 border-gray-400 border-1">
+        <div class="mt-3 text-white font-medium">Ou continue com:</div>
+        <div class="flex justify-center items-center gap-6 mt-5 mb-4">
+            <a href="./"><img class="rounded-full w-12 h-12" src="{{ asset('images/googleSL.avif') }}"
+                    alt="google social link"></a>
+            <a href="./"><img class="rounded-full w-12 h-12" src="{{ asset('images/facebookSL.png') }}"
+                    alt="facebook social link"></a>
+            <a href="./"><img class="rounded-full w-12 h-12" src="{{ asset('images/appleSL.jpg') }}"
+                    alt="apple social link"></a>
         </div>
     </form>
 </x-guest-layout>
