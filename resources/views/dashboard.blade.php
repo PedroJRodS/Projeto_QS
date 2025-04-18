@@ -4,17 +4,17 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Items Encontrados</h3>
-                    <p class="mt-2 text-2xl font-semibold text-gray-800 dark:text-white">152</p>
+                    <p class="mt-2 text-2xl font-semibold text-gray-800 dark:text-white">{{ $countLostItems }}</p>
                 </div>
 
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Items Devolvidos</h3>
-                    <p class="mt-2 text-2xl font-semibold text-gray-800 dark:text-white">87</p>
+                    <p class="mt-2 text-2xl font-semibold text-gray-800 dark:text-white">{{ $countReturnedItems }}</p>
                 </div>
 
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Relatos Recebidos</h3>
-                    <p class="mt-2 text-2xl font-semibold text-gray-800 dark:text-white">64</p>
+                    <p class="mt-2 text-2xl font-semibold text-gray-800 dark:text-white">{{ $countReports }}</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 mb-8">
@@ -27,6 +27,7 @@
                 </span>
             </div>
             <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-4 overflow-x-auto">
+        <h2 class="text-xl font-semibold mb-6 text-gray-800 dark:text-white">Perdas mais recentes:</h2>
                 <table class="w-full text-left text-sm border-separate border-spacing-0">
                     <thead class="text-gray-600 dark:text-gray-300 border-b">
                         <tr>

@@ -7,7 +7,7 @@
         <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Editar Item</h2>
 
         @if (session()->has('message'))
-          <div class="mb-4 text-green-500 font-medium">
+          <div class="mb-4 mt-4 text-amber-400 font-medium">
             {{ session()->get('message') }}
           </div>
         @endif
@@ -17,7 +17,7 @@
           @method('PUT')
 
           <div>
-            <label for="name" class="text-white block text-sm font-medium mb-1">Nome do item</label>
+            <label for="name" class="text-white block text-sm font-medium mb-1">Nome do item<span class="text-red-500">*</span></label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
               type="text" name="name" id="name" value="{{ old('name', $item->name) }}">
             @error('name')
@@ -26,7 +26,7 @@
           </div>
 
           <div>
-            <label for="description" class="block text-white text-sm font-medium mb-1">Descrição</label>
+            <label for="description" class="block text-white text-sm font-medium mb-1">Descrição<span class="text-red-500">*</span></label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
               type="text" name="description" id="description" value="{{ old('description', $item->description) }}">
             @error('description')
@@ -35,7 +35,7 @@
           </div>
 
           <div>
-            <label for="found_date" class="block text-white text-sm font-medium mb-1">Data em que foi encontrado</label>
+            <label for="found_date" class="block text-white text-sm font-medium mb-1">Data em que foi encontrado<span class="text-red-500">*</span></label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm"
               type="date" name="found_date" id="found_date" value="{{ old('found_date', $item->found_date) }}">
             @error('found_date')
@@ -44,7 +44,7 @@
           </div>
 
           <div>
-            <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria</label>
+            <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria<span class="text-red-500">*</span></label>
             <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm" name="category_id" id="category_id">
               <option value="" disabled>Escolha uma categoria</option>
               @foreach($categories as $category)
@@ -59,7 +59,7 @@
           </div>
 
           <div>
-            <label for="location_id" class="block text-white text-sm font-medium mb-1">Local</label>
+            <label for="location_id" class="block text-white text-sm font-medium mb-1">Local<span class="text-red-500">*</span></label>
             <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm" name="location_id" id="location_id">
               <option value="" disabled>Escolha um local</option>
               @foreach($locations as $location)
@@ -74,7 +74,7 @@
           </div>
 
           <div>
-            <label for="status" class="block text-white text-sm font-medium mb-1">Status</label>
+            <label for="status" class="block text-white text-sm font-medium mb-1">Status<span class="text-red-500">*</span></label>
             <select class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm" name="status" id="status">
               <option value="Perdido" @selected(old('status', $item->status) == 'Perdido')>Perdido</option>
               <option value="Devolvido" @selected(old('status', $item->status) == 'Devolvido')>Devolvido</option>

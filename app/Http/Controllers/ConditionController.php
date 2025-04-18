@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Condition;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ConditionController extends Controller
 {
     public readonly Condition $condition;
+    public readonly Item $item;
 
     public function __construct()
     {
         $this->condition = new Condition();
+        $this->item = new Item();
     }
 
     public function create()
@@ -25,13 +28,17 @@ class ConditionController extends Controller
 
     public function store(Request $request)
     {
-        $created = $this->condition->create([
-            'name' => $request->input('name')
+        // Validação antes de qualquer ação
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
         ]);
-        if ($created) {
-            return redirect()->back()->with('message', 'Criado com sucesso');
-        }
-        return redirect()->back()->with('message', "Error: Estado não pode ser criado");
+
+        // Criação segura com dados validados
+        Condition::create([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('adminPanel')->with('message', 'Estado cadastrada com sucesso!');
     }
 
     public function destroy(string $id)

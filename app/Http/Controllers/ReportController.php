@@ -34,19 +34,25 @@ class ReportController extends Controller
 
     public function store(Request $request)
     {
-        $created = $this->report->create([
-            'item_name' => $request->input('item_name'),
-            'description' => $request->input('description'),
-            'report_date' => $request->input('report_date'),
-            'reporter_name' => $request->input('reporter_name'),
-            'category_id' => $request->input('category_id'),
-            'location_id' => $request->input('location_id'),
+        $validated = $request->validate([
+            'item_name' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'report_date' => 'required|date',
+            'reporter_name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'location_id' => 'required|exists:locations,id',
+            'condition_id' => 'required|exists:conditions,id',
         ]);
+
+        $created = $this->report->create($validated);
+
         if ($created) {
-            return redirect()->back()->with('message', 'Criado com sucesso');
+            return redirect()->route('reports.index')->with('message', 'Relato criado com sucesso!');
         }
-        return redirect()->back()->with('message', "Error: couldn't create report");
+
+        return redirect()->back()->with('message', "Erro: não foi possível criar o relato.");
     }
+
 
     public function show(Report $report)
     {
@@ -58,17 +64,26 @@ class ReportController extends Controller
     {
         $categories = Category::all();
         $locations = Location::all();
-        $report = Report::with(['category', 'location'])->findOrFail($report->id);
-        return view('report_edit', ['report' => $report], compact('categories', 'locations'));
+        $conditions = Condition::all();
+        $report = Report::with(['category', 'location', 'condition'])->findOrFail($report->id);
+        return view('report_edit', ['report' => $report], compact('categories', 'locations', 'conditions'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Report $report)
     {
-        $updated = $this->report->where('id', $id)->update($request->except(['_token', '_method']));
-        if ($updated) {
-            return redirect()->back()->with('message', 'Atualizado com sucesso');
-        }
-        return redirect()->back()->with('message', "Error: couldn't update report");
+        $validated = $request->validate([
+            'item_name' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'report_date' => 'required|date',
+            'reporter_name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'location_id' => 'required|exists:locations,id',
+            'condition_id' => 'required|exists:conditions,id',
+        ]);
+
+        $report->update($validated);
+
+        return redirect()->route('reports.index')->with('message', 'Relato atualizado com sucesso!');
     }
 
     public function destroy(string $id)

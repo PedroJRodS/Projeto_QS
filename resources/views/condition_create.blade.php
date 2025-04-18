@@ -1,18 +1,27 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ route('adminPanel') }}">Voltar</a>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            <a href="{{ route('adminPanel') }}" class="text-amber-400 hover:underline mb-4 inline-block">← Voltar</a>
 
-                    @if (session()->has('message'))
-                    {{ session()->get('message'); }}
-                    @endif
+            <div class="bg-white dark:bg-[rgb(62,62,58)] shadow-md rounded-lg p-8">
+                <h2 class="text-2xl font-semibold mb-6 text-white">Criar estado</h2>
 
-                    <form action="{{ route('conditions.store') }}" method="post">
+@if (session()->has('message'))
+          <div class="mb-4 mt-4 text-amber-400 font-medium">
+            {{ session()->get('message') }}
+          </div>
+        @endif
+
+                    <form action="{{ route('conditions.store') }}" method="post" class="space-y-5">
                         @csrf
-                        <input class="rounded" type="text" name="name" placeholder="Nome do estado"> <br>
-                        <button class="mt-1 rounded underline font-semibold" type="submit">Criar</button>
+                        <div>
+                        <label for="name" class="text-white block text-sm font-medium mb-1">Nome do estado<span class="text-red-500">*</span></label>
+                        <input class="rounded" type="text" name="name" id="name" value="{{ old('name') }}"><br>
+                        @error('name')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                        <button class="px-6 py-2 mt-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-md transition" type="submit">Criar</button>
+                     </div>
                     </form>
                 </div>
             </div>

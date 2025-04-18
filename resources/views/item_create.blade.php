@@ -7,7 +7,7 @@
         <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Cadastrar Item</h2>
 
         @if (session()->has('message'))
-          <div class="mb-4 text-green-500 font-medium">
+          <div class="mb-4 mt-4 text-amber-400 font-medium">
             {{ session()->get('message') }}
           </div>
         @endif

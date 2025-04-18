@@ -24,7 +24,7 @@
 
       <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
         @if (session()->has('message'))
-          <div class="mb-4 text-green-500 font-medium">
+          <div class="mb-4 mt-4 text-amber-400 font-medium">
             {{ session()->get('message') }}
           </div>
         @endif

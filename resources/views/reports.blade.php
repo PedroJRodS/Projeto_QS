@@ -22,7 +22,7 @@
 
       <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
         @if (session()->has('message'))
-        <div class="mb-4 text-green-500 font-medium">
+        <div class="mb-4 text-amber-400 font-medium">
           {{ session()->get('message') }}
         </div>
         @endif
@@ -45,30 +45,22 @@
               <th class="py-2 px-4 border-r border-white">Nome/relator</th>
               <th class="py-2 px-4 border-r border-white">Categoria</th>
               <th class="py-2 px-4 border-r border-white">Local</th>
-              <th class="py-2 px-4 border-r border-white">Condição</th>
+              <th class="py-2 px-4 border-r border-white">Estado</th>
             </tr>
           </thead>
           <tbody class="text-gray-300">
             @foreach ($reports as $report)
             <tr class="border-t border-white">
               <td class="py-2 px-4 border-r border-gray-300 underline text-amber-400">
-                @if(auth()->check() && !auth()->user()->is_admin)
                 <a href="{{ route('reports.edit', ['report' => $report->id]) }}">
                   {{ $report->item_name }}
                 </a>
-                @else
-                <a href="{{ route('reports.show', ['report' => $item->id]) }}" class="text-amber-400 ml-4">{{
-                  $report->item_name }}</a>
-                @endif
               </td>
-              <td class="py-2 px-4 border-r border-gray-300">
-                @if(auth()->check() && auth()->user()->is_admin)
-                <a href="{{ route('reports.edit', ['report' => $report->id]) }}"
-                  class="text-blue-400 hover:underline">Editar</a>
-                @endif
-                <a href="{{ route('reports.show', ['report' => $report->id]) }}"
-                  class="ml-4 hover:underline text-white">Ver</a>
-              </td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $report->report_date }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $report->reporter_name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $report->category->name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $report->location->name }}</td>
+              <td class="py-2 px-4 border-r border-gray-300">{{ $report->condition->name }}</td>
             </tr>
             @endforeach
           </tbody>

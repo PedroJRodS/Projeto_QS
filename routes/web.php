@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ConditionController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     // achados e perdidos
     Route::resource('items', ItemController::class);
     Route::resource('reports', ReportController::class);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
     Route::resource('categories', CategoryController::class);
     Route::resource('locations', LocationController::class);

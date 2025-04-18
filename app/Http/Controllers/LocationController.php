@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Location;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
     public readonly Location $location;
+    public readonly Item $item;
 
     public function __construct()
     {
         $this->location = new Location();
+        $this->item = new Item();
     }
 
     public function create()
@@ -25,13 +28,17 @@ class LocationController extends Controller
 
     public function store(Request $request)
     {
-        $created = $this->location->create([
-            'name' => $request->input('name')
+        // Validação antes de qualquer ação
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
         ]);
-        if ($created) {
-            return redirect()->back()->with('message', 'Criado com sucesso');
-        }
-        return redirect()->back()->with('message', "Error: couldn't create location");
+
+        // Criação segura com dados validados
+        Location::create([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('adminPanel')->with('message', 'Local cadastrado com sucesso!');
     }
 
     public function destroy(string $id)
