@@ -1,10 +1,4 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-      {{ __('Items') }}
-    </h2>
-  </x-slot>
-
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="mb-6">
@@ -24,9 +18,9 @@
 
       <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
         @if (session()->has('message'))
-          <div class="mb-4 mt-4 text-amber-400 font-medium">
-            {{ session()->get('message') }}
-          </div>
+        <div class="mb-4 mt-4 text-amber-400 font-medium">
+          {{ session()->get('message') }}
+        </div>
         @endif
 
         <div class="flex items-center gap-4 my-3">
