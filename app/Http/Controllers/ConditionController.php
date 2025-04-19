@@ -38,7 +38,7 @@ class ConditionController extends Controller
             'name' => $validated['name'],
         ]);
 
-        return redirect()->route('adminPanel')->with('message', 'Estado cadastrada com sucesso!');
+        return redirect()->route('adminPanel')->with('message', 'Estado cadastrado com sucesso!');
     }
 
     public function destroy(string $id)
