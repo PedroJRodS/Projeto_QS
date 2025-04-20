@@ -38,7 +38,7 @@ class LocationController extends Controller
             'name' => $validated['name'],
         ]);
 
-        return redirect()->route('adminPanel')->with('message', 'Local cadastrado com sucesso!');
+        return redirect()->route('adminPanel')->with('message', 'Local cadastrado');
     }
 
     public function destroy(string $id)

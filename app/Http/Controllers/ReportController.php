@@ -47,7 +47,7 @@ class ReportController extends Controller
         $created = $this->report->create($validated);
 
         if ($created) {
-            return redirect()->route('reports.index')->with('message', 'Relato criado com sucesso!');
+            return redirect()->route('reports.index')->with('message', 'Relato criado');
         }
 
         return redirect()->back()->with('message', "Erro: não foi possível criar o relato.");
@@ -83,7 +83,7 @@ class ReportController extends Controller
 
         $report->update($validated);
 
-        return redirect()->route('reports.index')->with('message', 'Relato atualizado com sucesso!');
+        return redirect()->route('reports.index')->with('message', 'Relato atualizado');
     }
 
     public function destroy(string $id)

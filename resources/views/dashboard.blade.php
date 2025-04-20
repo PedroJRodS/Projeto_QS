@@ -1,6 +1,10 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Dashboard</h2>
+                <div class="border-t dark:border-[#3E3E3A] my-3"></div>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Items Encontrados</h3>
@@ -27,27 +31,30 @@
                 </span>
             </div>
             <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-4 overflow-x-auto">
-        <h2 class="text-xl font-semibold mb-6 text-gray-800 dark:text-white">Perdas mais recentes:</h2>
-                <table class="w-full text-left text-sm border-separate border-spacing-0">
-                    <thead class="text-gray-600 dark:text-gray-300 border-b">
+                <div class="flex items-center gap-4 my-3">
+                    <h2 class="text-white font-semibold text-xl whitespace-nowrap">Perdas mais recentes</h2>
+                    <div class="flex-grow border-t border-gray-300 dark:border-white"></div>
+                </div>
+
+                <table class="min-w-full text-center border-separate border-spacing-0">
+                    <thead class="text-white">
                         <tr>
                             <th class="py-2 pr-4">Nome</th>
-                            <th class="py-2 px-4 border-l dark:border-gray-500">Descrição</th>
-                            <th class="py-2 px-4 border-l dark:border-gray-500">Data</th>
-                            <th class="py-2 px-4 border-l dark:border-gray-500">Local</th>
-                            <th class="py-2 px-4 border-l dark:border-gray-500">Estado</th>
+                            <th class="py-2 px-4 border-l border-gray-300">Data</th>
+                            <th class="py-2 px-4 border-l border-gray-300">Categoria</th>
+                            <th class="py-2 px-4 border-l border-gray-300">Local</th>
+                            <th class="py-2 px-4 border-l border-gray-300">Estado</th>
                         </tr>
                     </thead>
-                    <tbody class="text-gray-800 dark:text-gray-300">
-                        <tr class="border-b dark:hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
+                    <tbody class="text-gray-300">
+                        <tr class="dark:hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
                             <td class="py-2 pr-4">Carteira preta</td>
-                            <td class="py-2 px-4 border-l border-gray-200 dark:border-gray-500">Contém documentos
+                            <td class="py-2 px-4 border-l dark:border-gray-400">Contém documentos
                                 pessoais</td>
-                            <td class="py-2 px-4 border-l border-gray-200 dark:border-gray-500">10/04/2025</td>
-                            <td class="py-2 px-4 border-l border-gray-200 dark:border-gray-500">Biblioteca</td>
-                            <td class="py-2 px-4 border-l border-gray-200 dark:border-gray-500">Usado</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">10/04/2025</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">Biblioteca</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">Usado</td>
                         </tr>
-                        <!-- Outras linhas -->
                     </tbody>
                 </table>
             </div>

@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'name' => $validated['name'],
         ]);
 
-        return redirect()->route('adminPanel')->with('message', 'Categoria cadastrada com sucesso!');
+        return redirect()->route('adminPanel')->with('message', 'Categoria cadastrada');
     }
 
     public function show(Category $category)

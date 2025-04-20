@@ -17,6 +17,7 @@
       </div>
 
       <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
+        
         @if (session()->has('message'))
         <div class="mb-4 mt-4 text-amber-400 font-medium">
           {{ session()->get('message') }}
@@ -34,31 +35,31 @@
         </div>
         @else
         <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">
-          <thead>
+          <thead class="text-white">
             <tr>
-              <th class="py-2 px-4 border-r border-gray-300">Nome</th>
-              <th class="py-2 px-4 border-r border-gray-300">Data/achado</th>
-              <th class="py-2 px-4 border-r border-gray-300">Categoria</th>
-              <th class="py-2 px-4 border-r border-gray-300">Local</th>
-              <th class="py-2 px-4 border-r border-gray-300">Estado</th>
+              <th class="py-2 px-4">Nome</th>
+              <th class="py-2 px-4 border-l border-gray-300">Data/achado</th>
+              <th class="py-2 px-4 border-l border-gray-300">Categoria</th>
+              <th class="py-2 px-4 border-l border-gray-300">Local</th>
+              <th class="py-2 px-4 border-l border-gray-300">Estado</th>
             </tr>
           </thead>
           <tbody class="text-gray-300">
             @foreach ($lostItems as $item)
-            <tr class="border-t border-white">
-              <td class="py-2 px-4 border-r border-gray-300 underline">
+            <tr class="border-t border-gray-400 hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
+              <td class="py-2 px-4 underline text-amber-400">
                 @if(auth()->check() && auth()->user()->is_admin)
-                <a href="{{ route('items.edit', ['item' => $item->id]) }}" class="text-amber-400">{{
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}">{{
                   $item->name }}</a>
                 @else
-                <a href="{{ route('items.show', ['item' => $item->id]) }}" class="text-amber-400 ml-4">{{
+                <a href="{{ route('items.show', ['item' => $item->id]) }}">{{
                   $item->name }}</a>
                 @endif
               </td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->found_date }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->category->name }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->location->name }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->condition->name }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->found_date }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->category->name }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->location->name }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->condition->name }}</td>
             </tr>
             @endforeach
           </tbody>
@@ -74,30 +75,30 @@
         </div>
         @else
         <table class="text-center min-w-full bg-[#3E3E3A] border-separate border-spacing-0">
-          <thead>
+          <thead class="text-white">
             <tr>
-              <th class="py-2 px-4 border-r border-white">Nome</th>
-              <th class="py-2 px-4 border-r border-white">Nome/receptor</th>
-              <th class="py-2 px-4 border-r border-white">Categoria</th>
-              <th class="py-2 px-4 border-r border-white">Local</th>
-              <th class="py-2 px-4 border-r border-white">Estado</th>
+              <th class="py-2 px-4">Nome</th>
+              <th class="py-2 px-4 border-l border-gray-300">Nome/receptor</th>
+              <th class="py-2 px-4 border-l border-gray-300">Categoria</th>
+              <th class="py-2 px-4 border-l border-gray-300">Local</th>
+              <th class="py-2 px-4 border-l border-gray-300">Estado</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-gray-300">
             @foreach ($returnedItems as $item)
-            <tr class="border-t border-white">
-              <td class="py-2 px-4 border-r border-gray-300 underline text-amber-400">
+            <tr class="border-gray-400 hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
+              <td class="py-2 px-4 underline text-amber-400">
                 @if(auth()->check() && auth()->user()->is_admin)
-                <a href="{{ route('items.edit', ['item' => $item->id]) }}" class="">{{ $item->name }}</a>
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}">{{ $item->name }}</a>
                 @else
-                <a href="{{ route('items.show', ['item' => $item->id]) }}" class="hover:underline ml-4">{{ $item->name
+                <a href="{{ route('items.show', ['item' => $item->id]) }}">{{ $item->name
                   }}</a>
                 @endif
               </td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->returned_to }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->category->name }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->location->name }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ $item->condition->name }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->returned_to }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->category->name }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->location->name }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{ $item->condition->name }}</td>
             </tr>
             @endforeach
           </tbody>

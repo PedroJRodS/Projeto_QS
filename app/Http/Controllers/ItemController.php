@@ -47,13 +47,13 @@ class ItemController extends Controller
 
         Item::create($validated);
 
-        return redirect()->route('items.index')->with('message', 'Item cadastrado com sucesso!');
+        return redirect()->route('items.index')->with('message', 'Item cadastrado');
     }
 
 
     public function show(Item $item)
     {
-        $item = Item::with(['category', 'location'])->findOrFail($item->id);
+        $item = Item::with(['category', 'location', 'condition'])->findOrFail($item->id);
         return view('item_show', ['item' => $item]);
     }
 
@@ -61,8 +61,9 @@ class ItemController extends Controller
     {
         $categories = Category::all();
         $locations = Location::all();
-        $item = Item::with(['category', 'location'])->findOrFail($item->id);
-        return view('item_edit', ['item' => $item], compact('categories', 'locations'));
+        $conditions = Condition::all();
+        $item = Item::with(['category', 'location', 'condition'])->findOrFail($item->id);
+        return view('item_edit', ['item' => $item], compact('categories', 'locations', 'conditions'));
     }
 
     public function update(Request $request, Item $item)
@@ -73,14 +74,15 @@ class ItemController extends Controller
             'found_date' => 'required|date',
             'category_id' => 'required|exists:categories,id',
             'location_id' => 'required|exists:locations,id',
+            'condition_id' => 'required|exists:conditions,id',
             'status' => 'required|in:Perdido,Devolvido',
-            'returned_date' => 'nullable|date|after_or_equal:found_date',
+            'returned_date' => 'nullable|date',
             'returned_to' => 'nullable|string|max:255',
         ]);
 
         $item->update($validated);
 
-        return redirect()->route('items.index')->with('message', 'Item atualizado com sucesso!');
+        return redirect()->route('items.index')->with('message', 'Item atualizado');
     }
 
 
