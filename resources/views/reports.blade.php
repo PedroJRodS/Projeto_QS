@@ -7,7 +7,7 @@
           <div>
             <a href="{{ route('reports.create') }}"
               class="bg-amber-400 text-white px-4 py-2 rounded hover:bg-amber-500 transition">
-              Novo Relato
+              Relatar Item
             </a>
           </div>
         </div>

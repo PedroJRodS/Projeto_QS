@@ -28,12 +28,10 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        // Validação antes de qualquer ação
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        // Criação segura com dados validados
         Category::create([
             'name' => $validated['name'],
         ]);

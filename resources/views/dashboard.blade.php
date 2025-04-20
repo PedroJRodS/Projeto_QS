@@ -30,7 +30,7 @@
                     23 items este mês
                 </span>
             </div>
-            <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-4 overflow-x-auto">
+            <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
                 <div class="flex items-center gap-4 my-3">
                     <h2 class="text-white font-semibold text-xl whitespace-nowrap">Perdas mais recentes</h2>
                     <div class="flex-grow border-t border-gray-300 dark:border-white"></div>

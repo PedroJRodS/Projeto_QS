@@ -23,12 +23,9 @@ class AdminPanelController extends Controller
         if (!Auth::check() || !Auth::user()->is_admin) {
             return redirect('/');
         }
-        // Listing
         $categories = Category::withCount('items', 'reports')->get();
         $locations = Location::withCount('items', 'reports')->get();
         $conditions = Condition::withCount('items', 'reports')->get();
-        // $locations = $this->location->all();
-        // How many cat./loc. are there
         $countCategories = Category::count();
         $countLocations = Location::count();
         $countConditions = Condition::count();

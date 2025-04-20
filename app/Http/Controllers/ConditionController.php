@@ -28,12 +28,10 @@ class ConditionController extends Controller
 
     public function store(Request $request)
     {
-        // Validação antes de qualquer ação
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        // Criação segura com dados validados
         Condition::create([
             'name' => $validated['name'],
         ]);

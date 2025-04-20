@@ -15,7 +15,6 @@
                 <form action="{{ route('reports.store') }}" method="post" class="space-y-5">
                     @csrf
 
-                    <!-- Nome do item -->
                     <div>
                         <label for="item_name" class="block text-white text-sm font-medium mb-1">Nome do item<span
                                 class="text-red-500">*</span></label>
@@ -26,7 +25,6 @@
                         @enderror
                     </div>
 
-                    <!-- Descrição -->
                     <div>
                         <label for="description" class="block text-white text-sm font-medium mb-1">Descrição do
                             item<span class="text-red-500">*</span></label>
@@ -37,7 +35,6 @@
                         @enderror
                     </div>
 
-                    <!-- Data do relato -->
                     <div>
                         <label for="report_date" class="block text-white text-sm font-medium mb-1">Data do
                             relato<span class="text-red-500">*</span></label>
@@ -48,7 +45,6 @@
                         @enderror
                     </div>
 
-                    <!-- Nome do relator -->
                     <div>
                         <label for="reporter_name" class="block text-white text-sm font-medium mb-1">Nome do
                             relator<span class="text-red-500">*</span></label>
@@ -59,7 +55,6 @@
                         @enderror
                     </div>
 
-                    <!-- Categoria -->
                     <div>
                         <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria<span
                                 class="text-red-500">*</span></label>
@@ -77,7 +72,6 @@
                         @enderror
                     </div>
 
-                    <!-- Local -->
                     <div>
                         <label for="location_id" class="block text-white text-sm font-medium mb-1">Local<span
                                 class="text-red-500">*</span></label>
@@ -112,8 +106,7 @@
                         @enderror
                     </div>
 
-                    <!-- Botão -->
-                    <div class="pt-4">
+                    <div class="flex justify-end">
                         <button type="submit"
                             class="px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-md transition">
                             Enviar Relato
