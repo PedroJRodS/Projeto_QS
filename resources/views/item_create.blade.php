@@ -28,8 +28,8 @@
           <!-- Descrição -->
           <div>
             <label for="description" class="block text-white text-sm font-medium mb-1">Descrição<span class="text-red-500">*</span></label>
-            <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
-              type="text" name="description" id="description" value="{{ old('description') }}">
+            <textarea class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
+              type="text" name="description" id="description" value="{{ old('description') }}"></textarea>
             @error('description')
               <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror

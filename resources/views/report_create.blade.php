@@ -17,7 +17,8 @@
 
                     <!-- Nome do item -->
                     <div>
-                        <label for="item_name" class="block text-white text-sm font-medium mb-1">Nome do item<span class="text-red-500">*</span></label>
+                        <label for="item_name" class="block text-white text-sm font-medium mb-1">Nome do item<span
+                                class="text-red-500">*</span></label>
                         <input type="text" name="item_name" id="item_name" value="{{ old('item_name') }}"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400">
                         @error('item_name')
@@ -29,8 +30,8 @@
                     <div>
                         <label for="description" class="block text-white text-sm font-medium mb-1">Descrição do
                             item<span class="text-red-500">*</span></label>
-                        <input type="text" name="description" id="description" value="{{ old('description') }}"
-                            class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400">
+                        <textarea type="text" name="description" id="description" value="{{ old('description') }}"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"></textarea>
                         @error('description')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
@@ -60,7 +61,8 @@
 
                     <!-- Categoria -->
                     <div>
-                        <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria<span class="text-red-500">*</span></label>
+                        <label for="category_id" class="block text-white text-sm font-medium mb-1">Categoria<span
+                                class="text-red-500">*</span></label>
                         <select name="category_id" id="category_id"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm">
                             <option value="" disabled selected>Escolha uma categoria</option>
@@ -77,7 +79,8 @@
 
                     <!-- Local -->
                     <div>
-                        <label for="location_id" class="block text-white text-sm font-medium mb-1">Local<span class="text-red-500">*</span></label>
+                        <label for="location_id" class="block text-white text-sm font-medium mb-1">Local<span
+                                class="text-red-500">*</span></label>
                         <select name="location_id" id="location_id"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm">
                             <option value="" disabled selected>Escolha um local</option>
