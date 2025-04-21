@@ -1,13 +1,16 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ route('reports.index') }}" class="text-amber-400 hover:underline mb-4 inline-block">← Voltar</a>
+            <a href="{{ route('reports.index') }}"
+                class="flex font-semibold text-md text-[#5b5b56] hover:text-amber-400 transition mb-2">
+                <x-heroicon-m-arrow-left class="w-6 h-6 mr-1" />Voltar
+            </a>
 
             <div class="bg-white dark:bg-[#3E3E3A] shadow-md rounded-lg p-8">
                 <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Relatar Item Perdido</h2>
 
                 @if (session()->has('message'))
-                <div class="mb-4 text-amber-400 font-medium">
+                <div class="mb-4 mt-4 text-amber-400 font-medium text-xl">
                     {{ session()->get('message') }}
                 </div>
                 @endif

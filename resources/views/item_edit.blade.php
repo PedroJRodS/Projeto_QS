@@ -1,13 +1,16 @@
 <x-app-layout>
   <div class="py-12">
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-      <a href="{{ route('items.index') }}" class="text-amber-400 hover:underline mb-4 inline-block">← Voltar</a>
+      <a href="{{ route('items.index') }}"
+        class="flex font-semibold text-md text-[#5b5b56] hover:text-amber-400 transition mb-2">
+        <x-heroicon-m-arrow-left class="w-6 h-6 mr-1" />Voltar
+      </a>
 
       <div class="bg-white dark:bg-[#3E3E3A] shadow-md rounded-lg p-8">
         <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Editar Item</h2>
 
         @if (session()->has('message'))
-        <div class="mb-4 mt-4 text-amber-400 font-medium">
+        <div class="mb-4 mt-4 text-amber-400 font-medium text-xl">
           {{ session()->get('message') }}
         </div>
         @endif
@@ -32,7 +35,8 @@
                 class="text-red-500">*</span></label>
             <textarea
               class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
-              type="text" name="description" id="description" value="{{ old('description', $item->description) }}"></textarea>
+              type="text" name="description" id="description"
+              value="{{ old('description', $item->description) }}"></textarea>
             @error('description')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
@@ -112,9 +116,9 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
           </div>
-          
+
           <h5 class="text-red-400 mt-4 font-semibold">Preencha somente se o item foi devolvido:</h5>
-          
+
           <div>
             <label for="returned_date" class="block text-white text-sm font-medium mb-1 mt-2">Data do retorno</label>
             <input class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm" type="date"
@@ -132,7 +136,7 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
           </div>
-          
+
           <button type="submit"
             class="px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-md transition">
             Salvar Alterações

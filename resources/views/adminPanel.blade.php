@@ -1,23 +1,39 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="mb-6">
+                <div class="flex space-x-2 text-white">
+                    <x-heroicon-s-cog-6-tooth class="w-9 h-9" />
+                    <h2 class="text-2xl font-bold mt-1">Painel de Administração</h2>
+                </div>
+                <div class="border-t dark:border-[#3E3E3A] my-3"></div>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Quantidade de Categorias:</h3>
+                    <div class="flex space-x-2 text-gray-400">
+                        <x-heroicon-s-tag class="w-5 h-5" />
+                        <h3 class="text-sm font-medium text-gray-400">Quantidade de Categorias:</h3>
+                    </div>
                     <a href="{{ route('categories.create') }}"
                         class="mt-2 block text-2xl font-semibold text-gray-800 dark:text-white hover:text-amber-400 transition-color duration-150 ease-in-out">{{
                         $countCategories }} +</a>
                 </div>
 
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Quantidade de Locais: </h3>
+                    <div class="flex space-x-2 text-gray-400">
+                        <x-heroicon-s-map-pin class="w-5 h-5" />
+                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Quantidade de Locais: </h3>
+                    </div>
                     <a href="{{ route('locations.create') }}"
                         class="mt-2 block text-2xl font-semibold text-gray-800 dark:text-white hover:text-amber-400 transition-color duration-150 ease-in-out">{{
                         $countLocations }} +</a>
                 </div>
 
                 <div class="dark:bg-[#3E3E3A] shadow rounded-lg p-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Quantidade de Estados:</h3>
+                    <div class="flex space-x-2 text-gray-400">
+                        <x-heroicon-s-sparkles class="w-5 h-5" />
+                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Quantidade de Estados:</h3>
+                    </div>
                     <a href="{{ route('conditions.create') }}"
                         class="mt-2 block text-2xl font-semibold text-gray-800 dark:text-white hover:text-amber-400 transition-color duration-150 ease-in-out">{{
                         $countConditions }} +</a>
@@ -26,7 +42,7 @@
             <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
 
                 @if (session()->has('message'))
-                <div class="mb-4 mt-4 text-amber-400 font-medium">
+                <div class="mb-4 mt-4 text-amber-400 font-medium text-xl">
                     {{ session()->get('message') }}
                 </div>
                 @endif
@@ -36,6 +52,7 @@
                         <div class="flex items-center gap-4 my-3">
                             <h2 class="font-semibold text-xl whitespace-nowrap">Categorias</h2>
                             <div class="flex-grow border-t border-gray-300 dark:border-white"></div>
+                            <x-heroicon-m-tag class="w-7 h-7" />
                         </div>
                         @if ($categories->isEmpty())
                         <div class="text-xl">
@@ -62,7 +79,9 @@
                                         method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="text-red-600 hover:underline">Excluir</button>
+                                        <button class="hover:text-red-600 transition w-full h-full flex justify-center">
+                                            <x-heroicon-s-trash class="w-5 h-5 text-center" />
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -73,6 +92,7 @@
                         <div class="flex items-center gap-4 my-3">
                             <h2 class="font-semibold text-xl whitespace-nowrap">Locais</h2>
                             <div class="flex-grow border-t border-gray-300 dark:border-white"></div>
+                            <x-heroicon-m-map-pin class="w-7 h-7" />
                         </div>
 
                         @if ($locations->isEmpty())
@@ -100,7 +120,9 @@
                                         method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="text-red-600 hover:underline">Excluir</button>
+                                        <button class="hover:text-red-600 transition w-full h-full flex justify-center">
+                                            <x-heroicon-s-trash class="w-5 h-5 text-center" />
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -111,6 +133,7 @@
                         <div class="flex items-center gap-4 my-3">
                             <h2 class="font-semibold text-xl whitespace-nowrap">Estados</h2>
                             <div class="flex-grow border-t border-gray-300 dark:border-white"></div>
+                            <x-heroicon-m-sparkles class="w-7 h-7" />
                         </div>
 
                         @if ($conditions->isEmpty())
@@ -138,7 +161,9 @@
                                         method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="text-red-600 hover:underline">Excluir</button>
+                                        <button class="hover:text-red-600 transition w-full h-full flex justify-center">
+                                            <x-heroicon-s-trash class="w-5 h-5 text-center" />
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
