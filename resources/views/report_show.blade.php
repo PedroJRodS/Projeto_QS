@@ -9,7 +9,8 @@
                         <ul>
                             <li>Nome do item: {{ $report->item_name }}</li>
                             <li>Descrição do item: {{ $report->description }}</li>
-                            <li>Data do relato: {{ $report->report_date }}</li>
+                            <li>Data do relato: {{
+                                \Carbon\Carbon::parse($report->report_date)->format('d/m/Y') }}</li>
                             <li>Nome do relator: {{ $report->reporter_name }}</li>
                             <li>Categoria: {{ $report->category->name }}</li>
                             <li>Local: {{ $report->location->name }}</li>

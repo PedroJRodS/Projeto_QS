@@ -55,13 +55,18 @@
               <td class="py-2 px-4 underline text-amber-400">
                 @if(auth()->check() && auth()->user()->is_admin)
                 <a href="{{ route('items.edit', ['item' => $item->id]) }}">{{
-                  $item->name }}<x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" /></a>
+                  $item->name }}
+                  <x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" />
+                </a>
                 @else
                 <a href="{{ route('items.show', ['item' => $item->id]) }}">{{
-                  $item->name }}<x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" /></a>
+                  $item->name }}
+                  <x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" />
+                </a>
                 @endif
               </td>
-              <td class="py-2 px-4 border-l border-gray-400">{{ $item->found_date }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{
+                \Carbon\Carbon::parse($item->found_date)->format('d/m/Y') }}</td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $item->category->name }}</td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $item->location->name }}</td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $item->condition->name }}</td>
@@ -95,10 +100,14 @@
             <tr class="border-gray-400 hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
               <td class="py-2 px-4 underline text-amber-400">
                 @if(auth()->check() && auth()->user()->is_admin)
-                <a href="{{ route('items.edit', ['item' => $item->id]) }}">{{ $item->name }}<x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" /></a>
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}">{{ $item->name }}
+                  <x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" />
+                </a>
                 @else
                 <a href="{{ route('items.show', ['item' => $item->id]) }}">{{ $item->name
-                  }}<x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" /></a>
+                  }}
+                  <x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" />
+                </a>
                 @endif
               </td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $item->returned_to }}</td>

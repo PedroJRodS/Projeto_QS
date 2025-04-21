@@ -36,13 +36,13 @@
             <div class="flex items-center gap-4 mb-8">
                 <div class="flex space-x-2 dark:text-white">
                     <h2 class="text-lg font-bold whitespace-nowrap">
-                        Items encontrados em Abril
+                        Items encontrados em {{ ucfirst($monthName) }}
                     </h2>
                     <x-heroicon-m-calendar-days class="w-6 h-6" />
                 </div>
                 <div class="flex-grow h-px dark:bg-[#3E3E3A]"></div>
                 <span class="inline-block bg-amber-500 text-white text-sm px-3 py-1 rounded-full shadow">
-                    23 items este mês
+                    {{ $foundItemsThisMonth }} items este mês
                 </span>
             </div>
             <div class="dark:bg-[#3E3E3A] overflow-hidden shadow-sm sm:rounded-lg p-6 pt-2 text-white">
@@ -56,23 +56,28 @@
                     <thead class="text-white">
                         <tr>
                             <th class="py-2 pr-4">Nome</th>
-                            <th class="py-2 px-4 border-l border-gray-300">Data</th>
+                            <th class="py-2 px-4 border-l border-gray-300">Data/perda</th>
                             <th class="py-2 px-4 border-l border-gray-300">Categoria</th>
                             <th class="py-2 px-4 border-l border-gray-300">Local</th>
                             <th class="py-2 px-4 border-l border-gray-300">Estado</th>
+                            <th class="py-2 px-4 border-l border-gray-300">Status</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-300">
+                        @foreach ($recentItems as $item)
                         <tr class="dark:hover:bg-[#1b1b18] transition-colors duration-300 ease-in-out">
-                            <td class="py-2 pr-4">Carteira preta</td>
-                            <td class="py-2 px-4 border-l dark:border-gray-400">Contém documentos
-                                pessoais</td>
-                            <td class="py-2 px-4 border-l dark:border-gray-400">10/04/2025</td>
-                            <td class="py-2 px-4 border-l dark:border-gray-400">Biblioteca</td>
-                            <td class="py-2 px-4 border-l dark:border-gray-400">Usado</td>
+                            <td class="py-2 pr-4">{{ $item->name }}</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">{{
+                                \Carbon\Carbon::parse($item->found_date)->format('d/m/Y') }}</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">{{ $item->category->name }}</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">{{ $item->location->name }}</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">{{ $item->condition->name }}</td>
+                            <td class="py-2 px-4 border-l dark:border-gray-400">{{ $item->status }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

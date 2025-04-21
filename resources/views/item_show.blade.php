@@ -9,12 +9,14 @@
         <ul class="space-y-3 text-lg text-gray-700 dark:text-gray-200">
           <li><strong>Nome:</strong> {{ $item->name }}</li>
           <li><strong>Descrição:</strong> {{ $item->description }}</li>
-          <li><strong>Encontrado em:</strong> {{ $item->found_date }}</li>
+          <li><strong>Encontrado em:</strong> {{
+            \Carbon\Carbon::parse($item->found_date)->format('d/m/Y') }}</li>
           <li><strong>Categoria:</strong> {{ $item->category->name }}</li>
           <li><strong>Local:</strong> {{ $item->location->name }}</li>
           <li><strong>Estado:</strong> {{ $item->condition->name }}</li>
           <li><strong>Status:</strong> {{ $item->status }}</li>
-          <li><strong>Data de Retorno:</strong> {{ $item->returned_date ?? '—' }}</li>
+          <li><strong>Data de Retorno:</strong> {{
+            \Carbon\Carbon::parse($item->returned_date)->format('d/m/Y') ?? '—' }}</li>
           <li><strong>Recebido por:</strong> {{ $item->returned_to ?? '—' }}</li>
         </ul>
       </div>

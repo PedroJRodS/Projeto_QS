@@ -54,9 +54,11 @@
               <td class="py-2 px-4 underline text-amber-400">
                 <a href="{{ route('reports.edit', ['report' => $report->id]) }}">
                   {{ $report->item_name }}
-                </a><x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" />
+                </a>
+                <x-heroicon-s-arrow-up-right class="w-3 h-3 inline mb-1" />
               </td>
-              <td class="py-2 px-4 border-l border-gray-400">{{ $report->report_date }}</td>
+              <td class="py-2 px-4 border-l border-gray-400">{{
+                \Carbon\Carbon::parse($report->report_date)->format('d/m/Y') }}</td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $report->reporter_name }}</td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $report->category->name }}</td>
               <td class="py-2 px-4 border-l border-gray-400">{{ $report->location->name }}</td>
