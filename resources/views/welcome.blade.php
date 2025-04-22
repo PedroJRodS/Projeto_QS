@@ -32,7 +32,7 @@
                             </span>
                             <span>
                                 Ver lista de
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#fbbf24] dark:text-[#fbbf24] ml-1">
+                                <a href="{{ route('items.index') }}" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#fbbf24] dark:text-[#fbbf24] ml-1">
                                     <span>items perdidos</span>
                                     <svg
                                         width="10"
@@ -59,7 +59,7 @@
                             </span>
                             <span>
                                 Perdeu algo? Relate
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#fbbf24] dark:text-[#fbbf24] ml-1">
+                                <a href="{{ route('reports.index') }}" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#fbbf24] dark:text-[#fbbf24] ml-1">
                                     <span>aqui</span>
                                     <svg
                                         width="10"
