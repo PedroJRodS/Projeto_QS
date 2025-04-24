@@ -35,8 +35,7 @@
                 class="text-red-500">*</span></label>
             <textarea
               class="w-full rounded-md border-gray-300 dark:border-gray-700 p-2 shadow-sm focus:ring focus:ring-amber-400"
-              type="text" name="description" id="description"
-              value="{{ old('description', $item->description) }}"></textarea>
+              type="text" name="description" id="description">{{ old('description', $item->description) }}</textarea>
             @error('description')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
